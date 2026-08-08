@@ -1,0 +1,129 @@
+<section id="editarContacto" class="section">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Editar contacto
+            </h2>
+
+            <p>
+                Modifica la información del contacto
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card formulario-card">
+
+        <form id="editarContactoForm">
+
+            <input
+                type="hidden"
+                id="editarContactoId"
+            >
+
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="editarNombre">
+                        Nombre
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editarNombre"
+                        placeholder="Ej. Albert Pérez"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="editarTelefono">
+                        Teléfono
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editarTelefono"
+                        placeholder="Ej. 2711234567"
+                        maxlength="10"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="editarCorreo">
+                        Correo
+                    </label>
+
+                    <input
+                        type="email"
+                        id="editarCorreo"
+                        placeholder="Ej. albert@gmail.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="editarEmpresa">
+                        Empresa
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editarEmpresa"
+                        placeholder="Ej. OpenAI"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="editarMensaje"
+                class="modal-message"
+            >
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="cancelarEdicion"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Guardar cambios
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>

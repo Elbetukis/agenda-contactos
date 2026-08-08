@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Agenda de Contactos
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/estilos.css"
+    >
+
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================
+             BARRA LATERAL
+        ========================== -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <span>
+                    📒
+                </span>
+
+                <h2>
+                    Agenda
+                </h2>
+
+            </div>
+
+
+            <nav>
+
+                <button
+                    class="menu-item active"
+                    data-section="inicio"
+                >
+
+                    🏠
+
+                    <span>
+                        Inicio
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    data-section="contactos"
+                >
+
+                    👥
+
+                    <span>
+                        Contactos
+                    </span>
+
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-footer">
+
+                Agenda de Contactos
+
+                <small>
+                    v1.0
+                </small>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================
+             CONTENIDO PRINCIPAL
+        ========================== -->
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1 id="tituloPagina">
+                        Inicio
+                    </h1>
+
+                    <p id="subtituloPagina">
+                        Resumen de tu agenda
+                    </p>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 INICIO
+            ========================== -->
+
+            <section
+                id="inicio"
+                class="section active-section"
+            >
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Resumen
+                        </h2>
+
+                        <p>
+                            Consulta el estado de tu agenda
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        id="btnNuevoDesdeInicio"
+                    >
+                        + Nuevo contacto
+                    </button>
+
+                </div>
+
+
+                <div class="dashboard-grid">
+
+                    <!-- TOTAL CONTACTOS -->
+
+                    <div class="card dashboard-card">
+
+                        <div class="dashboard-icon">
+                            👥
+                        </div>
+
+                        <div>
+
+                            <p>
+                                Total de contactos
+                            </p>
+
+                            <h3 id="totalContactos">
+                                0
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TOTAL EMPRESAS -->
+
+                    <div class="card dashboard-card">
+
+                        <div class="dashboard-icon">
+                            🏢
+                        </div>
+
+                        <div>
+
+                            <p>
+                                Empresas
+                            </p>
+
+                            <h3 id="totalEmpresas">
+                                0
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTACTOS RECIENTES -->
+
+                <div class="card recent-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Contactos recientes
+                            </h3>
+
+                            <p>
+                                Últimos contactos registrados
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            class="secondary-button"
+                            id="btnVerContactos"
+                        >
+                            Ver todos
+                        </button>
+
+                    </div>
+
+
+                    <div id="contactosRecientes">
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CONTACTOS
+            ========================== -->
+
+            <section
+                id="contactos"
+                class="section"
+            >
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Contactos
+                        </h2>
+
+                        <p>
+                            Administra todos tus contactos
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        id="btnNuevoContacto"
+                    >
+                        + Nuevo contacto
+                    </button>
+
+                </div>
+
+
+                <!-- BUSCADOR -->
+
+                <div class="search-container">
+
+                    <span>
+                        🔍
+                    </span>
+
+                    <input
+                        type="text"
+                        id="buscarContacto"
+                        placeholder="Buscar por nombre, correo o empresa..."
+                    >
+
+                </div>
+
+
+                <!-- TABLA -->
+
+                <div class="card table-card">
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        ID
+                                    </th>
+
+                                    <th>
+                                        Nombre
+                                    </th>
+
+                                    <th>
+                                        Teléfono
+                                    </th>
+
+                                    <th>
+                                        Correo
+                                    </th>
+
+                                    <th>
+                                        Empresa
+                                    </th>
+
+                                    <th>
+                                        Acciones
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tablaContactos">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL CONTACTO
+    ========================== -->
+
+    <div
+        id="modalContacto"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 id="modalTitulo">
+                    Nuevo contacto
+                </h2>
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="cerrarModal"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <form id="contactoForm">
+
+                <input
+                    type="hidden"
+                    id="contactoId"
+                >
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="nombre">
+                            Nombre
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombre"
+                            placeholder="Ej. Albert Pérez"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="telefono">
+                            Teléfono
+                        </label>
+
+                        <input
+                            type="text"
+                            id="telefono"
+                            placeholder="Ej. 2711234567"
+                            maxlength="10"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="correo">
+                            Correo
+                        </label>
+
+                        <input
+                            type="email"
+                            id="correo"
+                            placeholder="Ej. albert@gmail.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="empresa">
+                            Empresa
+                        </label>
+
+                        <input
+                            type="text"
+                            id="empresa"
+                            placeholder="Ej. OpenAI"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="modalMensaje"
+                    class="modal-message"
+                >
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelarModal"
+                    >
+                        Cancelar
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Guardar contacto
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL ELIMINAR
+    ========================== -->
+
+    <div
+        id="modalEliminar"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>
+                    Eliminar contacto
+                </h2>
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="cerrarModalEliminar"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <p>
+                ¿Estás seguro de que deseas eliminar este contacto?
+            </p>
+
+
+            <div
+                id="eliminarMensaje"
+                class="modal-message"
+            >
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="cancelarEliminar"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="button"
+                    class="danger-button"
+                    id="confirmarEliminar"
+                >
+                    Eliminar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         NOTIFICACIÓN
+    ========================== -->
+
+    <div
+        id="notificacion"
+        class="notification"
+    >
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="/app.js"></script>
+
+</body>
+
+</html>
